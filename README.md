@@ -9,7 +9,7 @@ Panasonic Let's Noteの「ホイールパッド」で円を描くようになぞ
 > - **Device**: Panasonic Let's Note SV1
 
 ## 概要
-waylandではlet's note のホイールパッドを円を書くように操作してスクロールができないので、pythonを使用してスクロールできるようにしました。また、このプロジェクトはAntigravityで開発しました。
+waylandではlet's note のホイールパッドを円を書くように操作してスクロールができないので、pythonを使用してスクロールできるようにしました。また、このプロジェクトはAntigravityで開発しました。(readmeも書かせました...)
 
 ## 準備
 
@@ -19,7 +19,7 @@ waylandではlet's note のホイールパッドを円を書くように操作�
 pip install evdev
 ```
 
-##ンストール・設定手順
+## インストール・設定手順
 
 GitHubに公開・共有するためのセットアップ手順です。
 
