@@ -92,4 +92,4 @@ sudo systemctl status wheelpad.service
 
 ## ⚖️ ライセンス
 
-[MIT License](LICENSE) (またはお好みのライセンス)
+[MIT License](LICENSE) 
