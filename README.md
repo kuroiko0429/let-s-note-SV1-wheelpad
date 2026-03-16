@@ -8,7 +8,10 @@ Panasonic Let's Noteの「ホイールパッド」で円を描くようになぞ
 > - **WM/Compositor**: Hyprland
 > - **Device**: Panasonic Let's Note SV1
 
-## 📋 準備
+## 概要
+waylandではlet's note のホイールパッドを円を書くように操作してスクロールができないので、pythonを使用してスクロールできるようにしました。また、このプロジェクトはAntigravityで開発しました。
+
+## 準備
 
 このスクリプトは `evdev` ライブラリを使用します。あらかじめインストールしておいてください。
 
@@ -16,7 +19,7 @@ Panasonic Let's Noteの「ホイールパッド」で円を描くようになぞ
 pip install evdev
 ```
 
-## 🛠 インストール・設定手順
+##ンストール・設定手順
 
 GitHubに公開・共有するためのセットアップ手順です。
 
@@ -90,6 +93,6 @@ sudo systemctl start wheelpad.service
 sudo systemctl status wheelpad.service
 ```
 
-## ⚖️ ライセンス
+## ライセンス
 
 [MIT License](LICENSE) 
