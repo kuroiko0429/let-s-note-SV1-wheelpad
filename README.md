@@ -11,6 +11,13 @@ Panasonic Let's Noteの「ホイールパッド」で円を描くようになぞ
 ## 概要
 waylandではlet's note のホイールパッドを円を書くように操作してスクロールができないので、pythonを使用してスクロールできるようにしました。また、このプロジェクトはAntigravityで開発しました。(readmeも書かせました...)
 
+## 主な機能
+- **スムーズスクロール**: 高解像度イベント (`REL_WHEEL_HI_RES`) による滑らかなスクロール対応
+- **水平スクロール**: 2本指で縁をなぞると横スクロール
+- **動的速度調整**: 早く回すとスクロールが加速
+- **慣性スクロール**: 指を離した後も設定した減速率でスクロールがしなやかに持続
+- **柔軟な設定**: `config.toml` による感度、デッドゾーン、各種速度のカスタマイズ
+
 ## 準備
 
 このスクリプトは `evdev` ライブラリを使用します。あらかじめインストールしておいてください。
@@ -26,13 +33,27 @@ GitHubに公開・共有するためのセットアップ手順です。
 ### 1. スクリプトの準備
 現在のディレクトリにある `wheelpad.py` を用意してください。
 
-### 2. スクリプトをシステムの領域に配置する
+### 2. スクリプトと設定ファイルの配置
 
-自分個人のフォルダではなく、システム全体が読み込める「プログラム置き場」に移動させます。Linuxの作法として `/usr/local/bin/` に置くのが一般的です。
+自分個人のフォルダではなく、システム全体が読み込める場所に移動させます。Linuxの作法として実行ファイルは `/usr/local/bin/`、設定ファイルは `/etc/` に置くのが一般的です。
 
 ```bash
+# プログラムを配置
 sudo cp wheelpad.py /usr/local/bin/wheelpad.py
+sudo chmod +x /usr/local/bin/wheelpad.py
+
+# 設定ファイルを配置
+sudo mkdir -p /etc/wheelpad
+sudo cp config.toml /etc/wheelpad/config.toml
 ```
+
+> [!TIP]
+> **設定の変更方法**
+> スクロール感度や慣性の強さを変えたい場合は `/etc/wheelpad/config.toml` を編集してください。
+> ```bash
+> sudo nano /etc/wheelpad/config.toml
+> ```
+> 編集後、`sudo systemctl restart wheelpad.service` で反映されます。
 
 ### 3. systemdサービスファイルの作成
 
@@ -91,6 +112,15 @@ sudo systemctl start wheelpad.service
 
 ```bash
 sudo systemctl status wheelpad.service
+```
+
+### 開発・デバッグ時の使い方
+
+システムにインストールせず、手元で一時的に動かす場合は設定ファイルのパスを直指定できます。
+`--debug` フラグをつけると、ターミナルにタッチ検出状況やスクロール速度が出力されます。
+
+```bash
+sudo python wheelpad.py --config ./config.toml --debug
 ```
 
 ## ライセンス

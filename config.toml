@@ -1,0 +1,54 @@
+# ==========================================
+# Let's Note Wheelpad 設定ファイル
+# ==========================================
+# 配置先: /etc/wheelpad/config.toml
+# または: --config オプションで指定
+
+[device]
+# evtest で確認できるタッチパッドのデバイス名（部分一致）
+name = "Synaptics TM3562-003"
+
+[wheelpad]
+# ホイールパッドの中心座標
+center_x = 264
+center_y = 264
+
+# スクロールモードに入る中心からの最小距離
+deadzone = 195
+
+# スクロール発火に必要な最小角度変化 (rad)
+sensitivity = 0.3
+
+# スムーズスクロール: 1ステップあたりの高解像度値
+# 120 = 標準1ノッチ。小さいほど細かいスクロールになる
+hires_step = 60
+
+# true にするとスクロール方向を反転（ナチュラルスクロール）
+natural_scroll = false
+
+[speed]
+# 回転速度に応じたスクロール倍率
+# velocity: 角速度のしきい値 (rad/s)
+# multiplier: スクロール倍率
+# ※ 上から順に判定され、最初にマッチしたものが適用される
+thresholds = [
+    { velocity = 8.0, multiplier = 4 },
+    { velocity = 4.0, multiplier = 3 },
+    { velocity = 2.0, multiplier = 2 },
+]
+
+[inertia]
+# 慣性スクロール（フリック）の設定
+enabled = false
+
+# 減速率: 毎フレームこの倍率で速度が低下する (0.0〜1.0)
+# 高い = ゆっくり減速, 低い = すぐ止まる
+# 0.92 = なめらか, 0.85 = 標準, 0.75 = きびきび
+friction = 0.92
+
+# この速度 (rad/s) を下回ったら慣性スクロール停止
+min_velocity = 0.5
+
+# 慣性スクロールのフレーム間隔 (秒)
+# 0.016 ≒ 60fps
+interval = 0.016
