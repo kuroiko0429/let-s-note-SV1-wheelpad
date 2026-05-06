@@ -8,6 +8,19 @@ Panasonic Let's Noteの「ホイールパッド」で円を描くようになぞ
 > - **WM/Compositor**: Hyprland
 > - **Device**: Panasonic Let's Note SV1
 
+## 他のLet's Noteモデルでも動くよ
+
+SV1で作ったけど、`config.toml` の以下の値を調整すれば **Let's Noteシリーズ全般**で動くはず。
+
+| 設定キー | 内容 | 調べ方 |
+| :--- | :--- | :--- |
+| `device.name` | タッチパッドのデバイス名 | `evtest` か `libinput list-devices` で確認 |
+| `wheelpad.center_x` | ホイールパッドの中心X座標 | `evtest` でパッドの中心付近をタッチして確認 |
+| `wheelpad.center_y` | ホイールパッドの中心Y座標 | 同上 |
+| `wheelpad.deadzone` | 中心の無反応ゾーン半径 | 小さくすると敏感、大きくすると鈍感 |
+
+調整は自分で頑張ってね（テヘペロ）
+
 ## 概要
 waylandではlet's note のホイールパッドを円を書くように操作してスクロールができないので、pythonを使用してスクロールできるようにしました。また、このプロジェクトはAntigravityで開発しました。(readmeも書かせました...)
 
